@@ -29,3 +29,25 @@ The system consists of a "Trinity" of core smart contracts designed for scalabil
 2. Install dependencies:
    ```bash
    npm install
+
+### Compilation
+Compile the smart contracts and generate TypeChain artifacts:
+```bash
+npx hardhat compile
+
+### Testing & Simulation
+Run the full-stack plumbing test to simulate a 1,000,000 SHIB swap and verify the incineration process:
+```bash
+npx hardhat run test_swap.js
+
+## 📈 Integration for Developers
+Engineers can interact with the `BurnRouter` to execute swaps. The Router handles the `transferFrom` logic, provided the user has granted an `allowance` to the Router address.
+
+```javascript
+// Example: Swap tokens through the Router
+await shib.approve(routerAddress, amount);
+await router.swapExactTokensForTokens(shibAddress, leashAddress, amount);
+
+## 📜 License
+
+This project is licensed under the MIT License.
